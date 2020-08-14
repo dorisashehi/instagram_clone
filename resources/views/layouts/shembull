@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Put style here-->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <!--Put title here-->
+        <title>{{ config('app.name') }}</title>
+
+    </head>
+    <body>
+        @include('inc.navbar')
+        <div class="container">
+            @include('inc.messages')
+            @yield('content')
+        </div>
+    </body>
+</html>
