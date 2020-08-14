@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Per te krijuar routes per secilen nga faqet.
+Route::get('/','PagesController@index');
+Route::get('/about','PagesController@about');
+Route::get('/services','PagesController@services');
+
+//Per te krijuar routes te funksioneve te PostController.
+Route::resource('posts','PostsController');
+
+Auth::routes();
+
+Route::get('/Home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
+
