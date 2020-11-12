@@ -13,19 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Per te krijuar routes per secilen nga faqet.
-Route::get('/','PagesController@index');
-Route::get('/about','PagesController@about');
-Route::get('/services','PagesController@services');
 
-//Per te krijuar routes te funksioneve te PostController.
-Route::resource('posts','PostsController');
+Route::get('/phpinfo', function() {
+    return phpinfo();
+});
 
 Auth::routes();
 
-Route::get('/Home', 'HomeController@index')->name('home');
+Route::get('/email',function(){
+    return \App\Mail\NewUserWelcomeMail();
+});
 
-Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::post('/follow/{user}','FollowsController@store');
 
+Route::get('/', 'PostsController@index');
+Route::get('/p/create', 'PostsController@create');
+Route::post('/p', 'PostsController@store');
+Route::get('/p/{post}', 'PostsController@show');
+
+
+
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');

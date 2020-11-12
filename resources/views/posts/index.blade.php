@@ -1,25 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>Posts</h1>
-
-  @if(count($posts)>0)
-    @foreach ($posts as $post)
-      <div class="card card-body bg-light">
-        <div class="col-md-4 col-sm-4">
-
-
-        <img style="width:100%" src="/storage/{{$post->cover_image}}">
+<div class="container">
+   @foreach ($posts as $post)
+        <div class="row">
+            <div class="col-6 offset-3">
+                <a href="/profile/{{ $post->user->id }}">
+                        <img src="/storage/{{$post->image}}" class='w-100'>
+                </a>
+            </div>
         </div>
-        <div class="col-md-8 col-sm-8">
-            <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
-            <small>written {{$post->created_at}} by user {{$post->user->name}}</small>
+        <div class="row pt-2 pb-4">
+            <div class="col-6 offset-3">
+                <div>
+                    <p>
+                        <span class="font-weight-bold">
+                            <a href="/profile/{{$post->user->id}}">
+                                <span class="text-dark">{{$post->user->username}}</span>
+                            </a>
+                        </span> {{$post->caption}}
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-      </br>
-    @endforeach
-    {{$posts->links()}}
-  @else
-     <p>No posts found</p>
-  @endif
+   @endforeach
+   <div class="row">
+       <div class="col-12 d-flex justify-content-center">
+           {{ $posts->links() }}
+       </div>
+   </div>
+
+</div>
 @endsection

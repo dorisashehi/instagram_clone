@@ -3,17 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+
 class Post extends Model
 {
-    //Table Name
-    protected $table='posts';
-    //Primary Key
-    public  $primaryKey='id';
-    //Timestamps
-    public $timestamps=true;
+    //
+    protected $guarded=[];
 
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function user()
+    {
+        # code...
+        return $this->belongsTo(User::class);
     }
 }
