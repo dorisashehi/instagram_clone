@@ -1,6 +1,6 @@
 ## Instagram clone 
 
-That project creates by default two users. For each of them shows followers and how much people they follow. Users can create a post, edit thier profile , see their followers posts and open a post to see.
+That project creates by default two users(but you can register other users too). For each of them shows followers and how much people they follow. Users can create a post, edit their profile , see their followers posts and open a post to see.It's just an example of a project in laravel without style
 
 ## Installation(Run these commands)
 
@@ -12,7 +12,7 @@ That project creates by default two users. For each of them shows followers and 
 ## Versions
 
 -php7.2 \
--laravel version: 7.25 \ 
--mysql:5.7
+-laravel version: 7.25  \ 
+-mysql:5.7 \
 
 
