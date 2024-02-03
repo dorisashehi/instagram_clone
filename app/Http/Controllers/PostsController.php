@@ -43,19 +43,13 @@ class PostsController extends Controller
         ]);
 
         $imagePath=request('image')->store('uploads','public');
-        $image=Image::make(public_path('storage/'.$imagePath))->fit(100,100);
+        $image=Image::make(public_path('storage/'.$imagePath))->fit(900,900);
         $image->save();
         auth()->user()->posts()->create([
             'caption'=>$data['caption'],
             'image'=>$imagePath,
         ]);
 
-        // \App\Post::create($data);
-        // $post=new \App\Post();
-        // $post->caption=$data['caption'];
-        // $post->image=$data['image'];
-        // $post->save();
-        //dd(request()->all());
         return redirect('/profile/'.auth()->user()->id);
     }
 
