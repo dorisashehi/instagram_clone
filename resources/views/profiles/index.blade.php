@@ -10,13 +10,19 @@
         <div class="d-flex justify-content-between align-items-baseline">
             <div class="d-flex align-items-center pb-3">
                 <div class="h4">{{$user->username}}</div>
-            <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+            @if (!$same_user)
+                <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+            @endif
+           
             </div>
             @can('update', $user->profile)
                 <a href="/p/create">Add New Post</a>
             @endcan
         </div>
-
+           <!--
+            we use :can for allowing only authorized users to edit.
+            The authorizes is related to policy rule we have put.
+            -->
            @can('update', $user->profile)
                 <a href="/profile/{{$user->id}}/edit">Edit profile link</a>
            @endcan

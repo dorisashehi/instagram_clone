@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <form action="/profile/{{$user->id}}" enctype="multipart/form-data" method="post">
-        @csrf
+        @csrf <!-- generete a value that prevents others to post in your website from a fake website. -->
         @method('PATCH');
 
         <div class="row">

@@ -20,7 +20,8 @@ class ProfilesController extends Controller
     {
         $user=User::findOrFail($user);
         $follows=(auth()->user()) ? auth()->user()->following->contains($user->id) : false;
-       // dd($follows);
+        $same_user = (auth()->user()->id === $user->id) ? true : false;
+    
        $postCount=Cache::remember(
            'count.posts.'.$user->id,
            now()->addseconds(30),
@@ -46,7 +47,7 @@ class ProfilesController extends Controller
             }
        );
 
-        return view('profiles.index',compact('user','follows','postCount','followersCount','followingCount'));
+        return view('profiles.index',compact('user','follows','postCount','followersCount','followingCount','same_user'));
     }
 
     public function edit(\App\User $user)
@@ -71,9 +72,9 @@ class ProfilesController extends Controller
 
         if(request('image')){
             $imagePath=request('image')->store('profile','public');
-            $image=Image::make(public_path('storage/'.$imagePath))->fit(900,900);
+            $image=Image::make(public_path('storage/'.$imagePath));
             $image->save();
-            $imageArray=['image'=>$imagePath];
+            $imageArray=['image'=>$image->basename];
         }
 
         auth()->user()->profile->update(array_merge(

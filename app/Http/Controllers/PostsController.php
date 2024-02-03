@@ -10,7 +10,7 @@ class PostsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth');//protect accessing a specific route without login as a user.
     }
 
     //index

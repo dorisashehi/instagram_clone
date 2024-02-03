@@ -12,12 +12,18 @@
                     <div class="pr-3">
                         <img src="{{ $post->user->profile->profileImage() }}" style="max-width:40px;" class="rounded-circle w-100">
                     </div>
+                    @php
+                        $same_user = (auth()->user()->id === $post->user->id) ? true : false;
+                    @endphp
+                    
                     <div>
                         <div class="font-weight-bold">
                             <a href="/profile/{{$post->user->id}}">
                                 <span class="text-dark">{{$post->user->username}}</span>
                             </a>
-                            <a href="#" class="pl-3">Follow</a>
+                            @if (!$same_user)
+                                <a href="#" class="pl-3">Follow</a>
+                            @endif
                         </div>
                     </div>
                 </div>

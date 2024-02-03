@@ -41,6 +41,13 @@ RUN docker-php-ext-install \
     gd \
     zip
 
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    --with-gd \
+    --with-jpeg-dir \
+    --with-png-dir \
+    --with-zlib-dir
+
+RUN docker-php-ext-install -j$(nproc) gd
 
 # 5. composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
