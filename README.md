@@ -12,8 +12,8 @@ That project creates by default two users(but you can register other users too).
 
 ## Versions
 
-- php7.2 \
-- laravel version: 7.25  \ 
-- mysql:5.7 \
+- php7.2 
+- laravel version: 7.25  
+- mysql:5.7 
 
 
