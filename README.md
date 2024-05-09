@@ -4,15 +4,16 @@ That project creates by default two users(but you can register other users too).
 
 ## Installation(Run these commands)
 
--docker-compose up
--Inside docker container run :composer install
--php artisan storage:link
--access website in browser
+- docker-compose up
+- Inside docker container run :composer install
+- php artisan storage:link
+- php artisan migrate
+- access website in browser
 
 ## Versions
 
--php7.2 \
--laravel version: 7.25  \ 
--mysql:5.7 \
+- php7.2 \
+- laravel version: 7.25  \ 
+- mysql:5.7 \
 
 
